@@ -156,7 +156,8 @@ fn send_refuses_a_blocked_program_and_checks_status_atomically() {
 #[test]
 fn a_program_that_stays_done_takes_a_guarded_follow_up() {
     let s = session();
-    let agent = run(&s, "stty -echo; r state=done; while read -r l; do echo got:$l; r state=working; r state=done; done");
+    let agent =
+        run(&s, "stty -echo; r state=done; while read -r l; do echo got:$l; r state=working; r state=done; done");
     wait_until("done", || status(&s, &agent) == "done");
     let (code, err) = s.err(&["send", "--if", "idle", &agent, "nope"]);
     assert_eq!((code, err["error"]["kind"].as_str()), (10, Some("status_mismatch")));
