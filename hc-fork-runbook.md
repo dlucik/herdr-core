@@ -15,6 +15,12 @@ on `.` and `-` and takes three numbers. `0.1.18-sendifdone` reads as `0.1.18`, s
 With `+` the third part (`18+sendifdone`) does not parse, the build is never "older" than
 anything, and `hc update` would stay on the fork forever without saying so.
 
+Known test difference: `tests/update.rs`
+`an_up_to_date_binary_restarts_only_an_older_running_core` fails on this branch, because it passes
+`CARGO_PKG_VERSION` to `hc update --version`, which takes only `X.Y.Z`. It comes from the version
+suffix, not from the fix; the rest of the suite passes (401 passed, 3 ignored, 2026-11-07).
+The upstream branch `feat/send-if-done` has no suffix and passes `just check` in full.
+
 ## Build
 
     cd <worktree local/v0.1.18-send-if-done>
