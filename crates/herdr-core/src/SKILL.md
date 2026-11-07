@@ -244,6 +244,8 @@ paths start at your current folder. Prefer explicit paths for remote work.
   capture. A failed or blocked profile falls back to the incoming environment and records
   the shell and reason in `core.log`. To refresh an existing remote core, run
   `hc server restart --fresh` from a normal SSH login outside Herdr.
+- `send --if idle|working|done` types only while the status is exactly that;
+  otherwise it types nothing (`status_mismatch`). `blocked` still needs `--force`.
 - `hc run` without a command starts this machine's own shell. On macOS,
   this is a login shell so it loads the login environment; explicit commands
   are unchanged. Recovery shells use the same rule.
