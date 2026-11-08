@@ -1434,7 +1434,7 @@
       "name": "Apache-2.0"
     },
     "title": "herdr-core",
-    "version": "0.1.18-sendifdone"
+    "version": "0.1.18-sendifdone-ansi"
   },
   "methods": [
     {

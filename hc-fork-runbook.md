@@ -1,8 +1,15 @@
-# hc fork runbook: own build with `send --if done`
+# hc fork runbook: own build with `send --if done` and `read --ansi`
 
-Branch `local/v0.1.18-send-if-done` = tag `v0.1.18` + the fix (`feat: allow send --if done`)
-+ version `0.1.18-sendifdone`. Not for upstream. The upstream PR is on `feat/send-if-done`
-(from `master`).
+Branch `local/v0.1.18-sendifdone-ansi` = `local/v0.1.18-send-if-done` (tag `v0.1.18` +
+`feat: allow send --if done`) + `feat: add read --ansi to keep styles such as faint text`
++ version `0.1.18-sendifdone-ansi`. Not for upstream. Upstream PRs: #164 (`feat/send-if-done`)
+and #188 (`feat/read-faint`, issue #187), both from `master`.
+
+`0.1.18-sendifdone-ansi` reads as `0.1.18` too (same rule as below). Wherever this file says
+`0.1.18-sendifdone`, this build is `0.1.18-sendifdone-ansi`.
+
+Check after the swap: `hc read <t> --ansi` keeps SGR escapes; Claude Code's grey suggestion
+in its input line reads `❯` + U+00A0 + `ESC[0m ESC[2m` + text + `ESC[0m`.
 
 ## Why the version is `0.1.18-sendifdone`, not `0.1.18+sendifdone`
 
